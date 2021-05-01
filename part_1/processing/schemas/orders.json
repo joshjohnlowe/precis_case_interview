@@ -1,0 +1,104 @@
+{
+    "fields": [
+        {
+            "name": "order_id",
+            "type": "STRING",
+            "mode": "NULLABLE"
+        },
+        {
+            "name": "customer_id",
+            "type": "INTEGER",
+            "mode": "NULLABLE"
+        },
+        {
+            "name": "order_status",
+            "type": "STRING",
+            "mode": "NULLABLE"
+        },
+        {
+            "name": "order_purchase_timestamp",
+            "type": "TIMESTAMP",
+            "mode": "NULLABLE"
+        },
+        {
+            "name": "order_approved_at",
+            "type": "TIMESTAMP",
+            "mode": "NULLABLE"
+        },
+        {
+            "name": "order_delivered_carrier_date",
+            "type": "TIMESTAMP",
+            "mode": "NULLABLE"
+        },
+        {
+            "name": "order_item_id",
+            "type": "INTEGER",
+            "mode": "NULLABLE"
+        },
+        {
+            "name": "product_id",
+            "type": "STRING",
+            "mode": "NULLABLE"
+        },
+        {
+            "name": "seller_id",
+            "type": "STRING",
+            "mode": "NULLABLE"
+        },
+        {
+            "name": "price",
+            "type": "FLOAT",
+            "mode": "NULLABLE"
+        },
+        {
+            "name": "freight_value",
+            "type": "FLOAT",
+            "mode": "NULLABLE"
+        },
+        {
+            "name": "currency",
+            "type": "STRING",
+            "mode": "NULLABLE"
+        },
+        {
+            "name": "product_category_name",
+            "type": "STRING",
+            "mode": "NULLABLE"
+        },
+        {
+            "name": "product_name_lenght",
+            "type": "FLOAT",
+            "mode": "NULLABLE"
+        },
+        {
+            "name": "product_description_lenght",
+            "type": "FLOAT",
+            "mode": "NULLABLE"
+        },
+        {
+            "name": "product_photos_qty",
+            "type": "FLOAT",
+            "mode": "NULLABLE"
+        },
+        {
+            "name": "product_weight_g",
+            "type": "FLOAT",
+            "mode": "NULLABLE"
+        },
+        {
+            "name": "product_length_cm",
+            "type": "FLOAT",
+            "mode": "NULLABLE"
+        },
+        {
+            "name": "product_height_cm",
+            "type": "FLOAT",
+            "mode": "NULLABLE"
+        },
+        {
+            "name": "product_width_cm",
+            "type": "FLOAT",
+            "mode": "NULLABLE"
+        }
+    ]
+}

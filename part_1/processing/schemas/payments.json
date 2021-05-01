@@ -1,0 +1,29 @@
+{
+    "fields": [
+        {
+            "name": "order_id",
+            "type": "STRING",
+            "mode": "NULLABLE"
+        },
+        {
+            "name": "payment_value",
+            "type": "FLOAT",
+            "mode": "NULLABLE"
+        },
+        {
+            "name": "currency",
+            "type": "STRING",
+            "mode": "NULLABLE"
+        },
+        {
+            "name": "payment_types",
+            "type": "INTEGER",
+            "mode": "NULLABLE"
+        },        
+        {
+            "name": "payment_method",
+            "type": "STRING",
+            "mode": "NULLABLE"
+        }        
+    ]
+}
