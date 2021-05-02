@@ -18,7 +18,7 @@
  
 ---
 ## Technical tradeoffs and decisions
-- Initially _Cloud Dataflow_ was to be used to handle preprocessing and ingestion of data into BigQuery - and the plan was to develop a single flexible process that would handle all three file/data types. I however decided against this, and went with DataPrep instead as I don't believe developing a completely resuable, flexible pipeline as a _first iteration_ of a solution is a good way to work. For me personally, I would rather see results quickly and with some compromise, than spend too much time developing the perfect solution.
+- Initially _Cloud Dataflow_ was to be used to handle preprocessing and ingestion of data into BigQuery - and the plan was to develop a single flexible process that would handle all three file/data types. I however decided against this, and went with DataPrep instead as I don't believe developing a completely resuable, flexible pipeline as a _first iteration_ of a solution is a good way to work. For me personally, I would rather see results quickly and with some compromise, than spend too much time developing the perfect solution. There are some cost concerns with using DataPrep as well.
 - Instead of transforming the data during the processing stage - I decided to instead ingest all raw data into their respective tables in BigQuery, and then handle the transformations as a latter step (i.e ELT, not ETL). I believe that if a solution like this is to be used by analysts, then an ELT approach using an appropriate tool enables far greater visibility and transparency over data lineage.
 
 --- 
@@ -27,6 +27,11 @@
     1. Enable tracking of Drive folder via API
     2. Upload any helper/utility scripts to GCS
     3. Deploy infrastructure (Buckets, BQ tables, Cloud Functions)
+- Use orchestration tool to handle pipeline events. Airflow, Prefect, Dagster etc
 
 ---
+
+#TODO 2021/05/02
+- Automate dataprep jobs as files land in GCS
+
 #### Josh Lowe, 2021

@@ -15,7 +15,7 @@ from apache_beam.options.pipeline_options import (
 )
 
 # from google.cloud import bigquery as bq
-import gcsfs
+# import gcsfs
 
 # from apitools.clients import bigquery as bq
 
@@ -82,30 +82,23 @@ def run(argv=None):
 
     cloud_storage_to_bq = CloudStorageToBigQuery()
 
-    # gcs_file_system = gcsfs.GCSFileSystem(project="precis-digital-case-interview")
-    # with gcs_file_system.open(schema_location) as f:
-    #     schema_dict = json.load(f)
-    #     table_schema = json_to_schema(schema_dict)
-
     with open("./schemas/orders.json") as f:
         schema_dict = json.load(f)
         table_schema = json_to_schema(schema_dict)
 
     p = beam.Pipeline(options=_options)
-
     (
         p
-        | "Read file from cloud storage"
+        | "Read CSV file from cloud storage"
         >> ReadFromText(
             file_pattern=file_location,
             skip_header_lines=True
         )
         | 'CSV Row To BigQuery Row' 
-        # >> beam.ParDo(CloudStorageToBigQuery(), schema_dict)
         >> beam.Map(lambda s: cloud_storage_to_bq.process_row(s, schema_dict))
-        | "Write to big boi" 
+        | "Write to BigQuery" 
         >> bigquery.WriteToBigQuery(
-            table=f"precis-digital-case-interview:customer_orders.{output_table}",
+            table=f"precis-digital-case-interview:part_1.{output_table}",
             schema=table_schema,
             create_disposition=beam.io.BigQueryDisposition.CREATE_IF_NEEDED,
             write_disposition=beam.io.BigQueryDisposition.WRITE_TRUNCATE
@@ -118,7 +111,3 @@ def run(argv=None):
 if __name__ == "__main__":
     logging.getLogger().setLevel(logging.INFO)
     run()
-
-
-#TODO: Add schema GCS location as input var
-#TODO: Add filename GCS location as input var

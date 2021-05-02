@@ -17,6 +17,9 @@ import logging
 
 """
 Copies a file from Google Drive, to GCS
+
+Example invocation: 
+curl -X POST "https://us-central1-precis-digital-case-interview.cloudfunctions.net/drive_to_gcs" -H "Content-Type:application/json" --data '{"fileid":"1hks4jM6oluYpi1tfQqQDNQkDmSMka89s", "filename": "file_orders"}'
 """
 
 
