@@ -20,7 +20,7 @@
 
 ## Overview of pipeline
 
-![alt text](./images/part_1.png)
+![alt text](./part_1/images/part_1.png)
 1) Google Drive push notifications are enabled on appropriate folder, and have been enabled via the drive API with a call to the 'watch' endpoint. This will send a notification to a notification channel any time a file is updated.
 
 2) A cloud function (`copy_from_drive.py`) is deployed to receive these push notifications, and copy updated files to a landing bucket in cloud storage. They are copied with the current date as a prefix, as this will allow us to retain historical data for backfilling purposes.
