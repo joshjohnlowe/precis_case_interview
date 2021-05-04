@@ -26,15 +26,13 @@ def enable_watch():
         "1hks4jM6oluYpi1tfQqQDNQkDmSMka89s", # Orders
     ]
 
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(
-        "./drive-reader.json", scopes=scopes
-    )
+    # TODO: Retreive credentials from secret store
+    
+    # credentials = ServiceAccountCredentials.from_json_keyfile_name(
+    #     "./drive-reader.json", scopes=scopes
+    # )
 
     service = build("drive", "v3", credentials=credentials)
-
-    # results = service.files().list(
-    #     pageSize=10, fields="nextPageToken, files(id, name)").execute()
-    # items = results.get('files', [])
 
     channel_id = str(uuid.uuid4())
 
