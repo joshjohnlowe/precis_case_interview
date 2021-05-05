@@ -1,3 +1,4 @@
+import argparse
 import json
 import logging
 import typing
@@ -5,23 +6,13 @@ import typing
 import apache_beam as beam
 import pyarrow
 from apache_beam.io import fileio, parquetio
-from apache_beam.io.textio import ReadFromText, WriteToText
 from apache_beam.io.gcp import bigquery
-from apache_beam.options.pipeline_options import (
-    GoogleCloudOptions,
-    PipelineOptions,
-    SetupOptions,
-    StandardOptions,
-)
-
-# from google.cloud import bigquery as bq
-# import gcsfs
-
-# from apitools.clients import bigquery as bq
-
 from apache_beam.io.gcp.bigquery import parse_table_schema_from_json
-
-import argparse
+from apache_beam.io.textio import ReadFromText, WriteToText
+from apache_beam.options.pipeline_options import (GoogleCloudOptions,
+                                                  PipelineOptions,
+                                                  SetupOptions,
+                                                  StandardOptions)
 
 _options = PipelineOptions(
     runner="DataflowRunner",

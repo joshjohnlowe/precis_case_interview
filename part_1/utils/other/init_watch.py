@@ -9,8 +9,6 @@ import uuid
 Enables change-detection on all files within the "datasets" folder
 in Google drive. This allows us to automaticaly copy these files to
 GCS as they are updated
-
-Josh Lowe 2021
 """
 
 
@@ -27,7 +25,7 @@ def enable_watch():
     ]
 
     # TODO: Retreive credentials from secret store
-    
+
     # credentials = ServiceAccountCredentials.from_json_keyfile_name(
     #     "./drive-reader.json", scopes=scopes
     # )

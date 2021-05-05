@@ -3,18 +3,18 @@
 
 
 create or replace view part_1.top_first_purchases as (
-    -- This could be a permanent table created as part of data transformation
     with orders_aggregated as (
         select 
             o.order_id,
             o.customer_id, 
             o.product_id,
             min(o.order_purchase_timestamp) as order_purchase_timestamp, 
-            sum(o.price + freight_value) as total_price, 
+            p.payment_value as total_paid,
+            sum(o.price + o.freight_value) as total_cost, 
             count(o.order_id) as qty_of_items,
             o.product_category_name
-        from part_1.orders o join part_1.payments p on o.order_id = p.order_id
-        group by product_category_name, order_id, customer_id, product_id
+        from part_1.orders o left join part_1.payments p on o.order_id = p.order_id
+        group by product_category_name, order_id, customer_id, product_id, total_paid
     )
     select 
         product_category_name,
@@ -31,3 +31,8 @@ create or replace view part_1.top_first_purchases as (
     on o.customer_id = x.customer_id and o.order_purchase_timestamp = x.first_purchase)
     group by product_category_name
 );
+
+
+-- All orders tied to a given customer_id have an identical timestamp?
+select distinct customer_id from part_1.orders; --98666  
+select distinct customer_id, order_purchase_timestamp from part_1.orders; -- 98666
